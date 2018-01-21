@@ -21,8 +21,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        if ($request->user()->isAdmin() )
+        {
+            return view('admin.index');
+
+        }
+        if ($request->user()->isSimpleUser())
+        {
+            return view('simpleUser.index');
+
+        }
+        if ($request->user()->isAdminResto())
+        {
+            return view('adminResto.index');
+
+        }
     }
 }

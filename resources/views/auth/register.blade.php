@@ -42,14 +42,15 @@
 
 
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                            <label for="role" class="col-md-4 control-label">Role</label>
+                            <label for="role" class="col-md-4 control-label">Select a Role</label>
 
                             <div class="col-md-6" >
 
-                                <select name="role">
-                                    <option value="Admin">Admin</option>
-                                    <option value="RestaurantAdmin">Restaurant Admin</option>
-                                    <option value="SimpleUser">Simple User</option>
+                                <select  class="form-group" name="role">
+                                    <option value="">Select a Role here</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Restaurant Admin</option>
+                                    <option value="3">Simple User</option>
                                 </select>
 
                                 @if ($errors->has('role'))
@@ -59,7 +60,6 @@
                                 @endif
                             </div>
                         </div>
-
 
 
 

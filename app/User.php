@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -38,4 +38,91 @@ class User extends Authenticatable
     {
         return $this->hasMany('User');
     }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+
+
+    /**
+     * @param string|array $roles
+     * @return bool
+     */
+    public function authorizeRoles($roles)
+    {
+        if (is_array($roles)) {
+            return $this->hasAnyRole($roles) ||
+                abort(401, 'This action is unauthorized.');
+        }
+        return $this->hasRole($roles) ||
+            abort(401, 'This action is unauthorized.');
+    }
+
+    /**
+     * Check multiple roles
+     * @param array $roles
+     * @return bool
+     */
+    public function hasAnyRole($roles)
+    {
+        return null !== $this->roles()->whereIn('role', $roles)->first();
+    }
+
+    /**
+     * Check one role
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('role', $role)->first();
+    }
+
+
+
+
+//
+//    public function isAdmin()
+//    {
+//        if($this->roles()->first() == "Admin"){
+//            return true;
+//        }else
+//            return null;
+//
+//    }
+//    public function isAdminResto()
+//    {
+//        if($this->roles()->first() == "RestaurantAdmin"){
+//            return true;
+//        }else
+//            return null;
+//
+//    }
+//    public function isSimpleUser()
+//    {
+//        if($this->roles()->first() == "SimpleUser"){
+//            return true;
+//        }else
+//            return null;
+//
+//    }
+    public function isAdmin()
+    {
+        return null !== $this->roles()->where('name', 'Admin')->first();
+
+    }
+    public function isAdminResto()
+    {
+        return null !== $this->roles()->where('name', 'RestaurantAdmin')->first();
+    }
+    public function isSimpleUser()
+    {
+        return null !== $this->roles()->where('name', 'SimpleUser')->first();
+    }
+
+
+
+
+
 }
