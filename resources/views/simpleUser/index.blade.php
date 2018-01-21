@@ -1,4 +1,4 @@
-@extends('layouts.layoutDash')
+@extends('layouts.admin_template')
 
 @section('content')
 

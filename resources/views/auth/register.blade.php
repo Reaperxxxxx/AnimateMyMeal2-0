@@ -46,7 +46,7 @@
 
                             <div class="col-md-6" >
 
-                                <select  class="form-group" name="role">
+                                <select  class="form-control" name="role">
                                     <option value="">Select a Role here</option>
                                     <option value="1">Admin</option>
                                     <option value="2">Restaurant Admin</option>
@@ -60,6 +60,7 @@
                                 @endif
                             </div>
                         </div>
+
 
 
 

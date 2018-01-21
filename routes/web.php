@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('restauratns','RestaurantController') ;
+
+
+
+
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('restauratnsapi','api\RestaurantController') ;
+
+});

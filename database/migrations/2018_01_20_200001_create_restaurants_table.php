@@ -16,6 +16,9 @@ class CreateRestaurantsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name') ;
+            $table->string('location') ;
+
             $table->timestamps();
             $table->integer('id_User')->unsigned();
             $table->foreign('id_User')->references('id')->on('users');
