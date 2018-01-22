@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->user()->isAdmin() )
+        if ($request->user()->isAdmin())
         {
             return view('admin.index');
 

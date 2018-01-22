@@ -4,16 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Restaurant extends Model
 {
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\User','id_User');
     }
 
     public function clients()
     {
-        return $this->belongsToMany('User\User');
+        return $this->belongsToMany('User');
     }
 
     public function devices()
@@ -29,5 +30,10 @@ class Restaurant extends Model
     public function employees()
     {
         return $this->hasMany('Employee');
+    }
+
+    public function str()
+    {
+        return 'working' ;
     }
 }
