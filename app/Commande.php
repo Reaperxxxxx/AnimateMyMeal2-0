@@ -8,6 +8,6 @@ class Commande extends Model
 {
     public function order()
     {
-        return $this->hasOne('Order');
+        return $this->hasOne(Order::class);
     }
 }

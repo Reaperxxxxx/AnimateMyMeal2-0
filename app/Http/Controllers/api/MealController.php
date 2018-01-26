@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Restaurant ;
+use App\Http\Controllers\Controller;
+use App\Meal ;
 
-class RestaurantController extends Controller
+class MealController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,31 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-
-        //$restos = Restaurant::all() ;
-        $restos = Restaurant::with('user')->get() ;
-        return json_encode($restos) ;
+     //   $meals = Meal::all() ;
+        $meals = Meal::with('category')->get();
+        return json_encode($meals) ;
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -30,8 +49,9 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-      $resto = Restaurant::find($id)->with('user')->get() ;
-      return json_encode($resto) ;
+        $meal = Meal::find($id) ;
+        return json_encode($meal) ;
+
     }
 
     /**

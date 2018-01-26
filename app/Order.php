@@ -8,11 +8,11 @@ class Order extends Model
 {
     public function instances()
     {
-        return $this->hasMany('Instance_Device');
+        return $this->hasMany(Instance_Device::class);
     }
 
     public function commande()
     {
-        return $this->belongsTo('Commande');
+        return $this->belongsTo(Commande::class);
     }
 }

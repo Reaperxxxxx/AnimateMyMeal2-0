@@ -9,27 +9,27 @@ class Restaurant extends Model
 {
     public function user()
     {
-        return $this->belongsTo('App\User','id_User');
+        return $this->belongsTo(User::class,'id_User');
     }
 
     public function clients()
     {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany(User::class);
     }
 
     public function devices()
     {
-        return $this->hasMany('Device\Device');
+        return $this->hasMany(Device::class);
     }
 
     public function categories()
     {
-        return $this->hasMany('Category');
+        return $this->hasMany(Category::class);
     }
 
     public function employees()
     {
-        return $this->hasMany('Employee');
+        return $this->hasMany(Employee::class);
     }
 
     public function str()

@@ -31,12 +31,12 @@ class User extends Authenticatable
 
     public function restaurant()
     {
-        return $this->hasMany('App\Restaurant');
+        return $this->hasMany(Restaurant::class);
     }
 
     public function goesToRestaurant()
     {
-        return $this->hasMany('User');
+        return $this->hasMany(Restaurant::class);
     }
     public function roles()
     {
@@ -80,33 +80,6 @@ class User extends Authenticatable
     }
 
 
-
-
-//
-//    public function isAdmin()
-//    {
-//        if($this->roles()->first() == "Admin"){
-//            return true;
-//        }else
-//            return null;
-//
-//    }
-//    public function isAdminResto()
-//    {
-//        if($this->roles()->first() == "RestaurantAdmin"){
-//            return true;
-//        }else
-//            return null;
-//
-//    }
-//    public function isSimpleUser()
-//    {
-//        if($this->roles()->first() == "SimpleUser"){
-//            return true;
-//        }else
-//            return null;
-//
-//    }
     public function isAdmin()
     {
         return null !== $this->roles()->where('name', 'Admin')->first();

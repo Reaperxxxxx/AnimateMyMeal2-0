@@ -8,6 +8,6 @@ class Promotion extends Model
 {
     public function meals()
     {
-        return $this->hasMany('Meal');
+        return $this->hasMany(Meal::class);
     }
 }

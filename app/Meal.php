@@ -3,16 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Category ;
+
 
 class Meal extends Model
 {
     public function category()
     {
-        return $this->belongsTo('Category');
+        return $this->belongsTo(Category::class,'id_category');
     }
 
     public function Promotion()
     {
-        return $this->belongsTo('Promotion');
+        return $this->belongsTo(Promotion::class,'id_promotion');
     }
 }

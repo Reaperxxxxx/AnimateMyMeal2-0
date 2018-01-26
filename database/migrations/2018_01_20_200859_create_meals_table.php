@@ -15,8 +15,11 @@ class CreateMealsTable extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name') ;
+            $table->text('description');
+            $table->float('price') ;
             $table->timestamps();
-            $table->integer('id_promotion')->unsigned();
+            $table->integer('id_promotion')->unsigned()->nullable();
             $table->foreign('id_promotion')->references('id')->on('promotions');
             $table->integer('id_category')->unsigned();
             $table->foreign('id_category')->references('id')->on('categories');

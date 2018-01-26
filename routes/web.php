@@ -19,12 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('restauratns','RestaurantController') ;
+Route::resource('restaurant','RestaurantController') ;
 
 
 
 
 Route::group(['prefix' => 'api'], function () {
-    Route::resource('restauratnsapi','api\RestaurantController') ;
+    Route::resource('restaurant','api\RestaurantController') ;
+    Route::resource('meal','api\MealController') ;
+    Route::resource('category','api\CategoryController') ;
+    Route::resource('promotion','api\PromotionController') ;
+        Route::get('promomeals','api\PromotionController@promomeals') ;
+
 
 });

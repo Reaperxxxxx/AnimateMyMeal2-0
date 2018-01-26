@@ -8,11 +8,11 @@ class Employee extends Model
 {
     public function restaurant()
     {
-        return $this->belongsTo('Restaurant');
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function devices()
     {
-        return $this->hasMany('Device');
+        return $this->hasMany(Device::class);
     }
 }
