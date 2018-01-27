@@ -34,11 +34,7 @@
 
                                         </td>
                                         <td>
-<<<<<<< HEAD
-                                            <a class="btn btn-primary pull-right  " href="/restaurants/{{$resto->id}}/edit">Edit</a>
-=======
                                             <a class="btn btn-primary pull-right  " href="/restaurant/{{$resto->id}}/edit">Edit</a>
->>>>>>> 5406c79a3249908cbbf5c338129fcc0a7a13918f
                                         </td>
 
 
