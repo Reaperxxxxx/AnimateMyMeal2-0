@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('restaurant','RestaurantController') ;
+Route::resource('category','CategoryController') ;
 
 
 
