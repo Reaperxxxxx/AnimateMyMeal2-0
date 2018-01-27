@@ -35,7 +35,7 @@
 
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary pull-right  " href="/restauratns/{{$resto->id}}/edit">Edit</a>
+                                            <a class="btn btn-primary pull-right  " href="/restaurants/{{$resto->id}}/edit">Edit</a>
                                         </td>
 
 
@@ -58,7 +58,7 @@
 
                     <div class="panel-body">
 
-                        <form class="form-horizontal" method="POST" action="/restauratns">
+                        <form class="form-horizontal" method="POST" action="/restaurant">
                             {{ csrf_field() }}
 
 
