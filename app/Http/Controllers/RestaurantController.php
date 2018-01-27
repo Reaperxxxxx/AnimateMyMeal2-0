@@ -49,7 +49,7 @@ class RestaurantController extends Controller
         $resto->id_User = $request->input('user');
         $resto->save();
 
-        return redirect('/restauratns')->with('success', 'Restaurant added');
+        return redirect('/restaurant')->with('success', 'Restaurant added');
 
     }
 
@@ -97,7 +97,7 @@ class RestaurantController extends Controller
         $resto->id_User = $request->input('Owner');
         $resto->save();
 
-        return redirect('/restauratns')->with('success', 'Restaurant added');
+        return redirect('/restaurants')->with('success', 'Restaurant added');
     }
 
     /**
@@ -113,7 +113,7 @@ class RestaurantController extends Controller
 
             if(auth()->user()->isAdmin()) {
                 $rest->delete();
-                return redirect('/restauratns')->with('success', 'Restaurant deleted');
+                return redirect('/restaurants')->with('success', 'Restaurant deleted');
             }
         abort("503",'not authorized') ;
     }
