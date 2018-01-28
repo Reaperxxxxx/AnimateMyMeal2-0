@@ -42,7 +42,7 @@ class RestaurantController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'user' => 'required',
-            'image'=> 'required'
+
         ]);
 
         $resto = new Restaurant;
@@ -51,9 +51,9 @@ class RestaurantController extends Controller
         $resto->save();
 
 
-        $imageName = $resto->id . '.' .$request->file('image')->getClientOriginalExtension();
+        //$imageName = $resto->id . '.' .$request->file('image')->getClientOriginalExtension();
 
-        $request->file('image')->move(base_path() . '/public/images/catalog/', $imageName);
+        //$request->file('image')->move(base_path() . '/public/images/catalog/', $imageName);
 
 //
         return redirect('/restaurant')->with('success', 'Restaurant added');

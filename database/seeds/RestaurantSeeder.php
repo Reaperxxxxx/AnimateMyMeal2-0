@@ -31,11 +31,6 @@ class RestaurantSeeder extends Seeder
         $resto->save() ;
 
         $resto = new Restaurant();
-        $resto->name="Plan B" ;
-        $resto->user()->associate(User::find(2)) ;
-        $resto->save() ;
-
-        $resto = new Restaurant();
         $resto->name="La Terrasse" ;
         $resto->user()->associate(User::find(2)) ;
         $resto->save() ;
