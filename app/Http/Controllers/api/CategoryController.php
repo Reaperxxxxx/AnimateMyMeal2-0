@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category ;
+use App\Restaurant ;
 class CategoryController extends Controller
 {
     /**
@@ -83,5 +84,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function catbyresto($id_resto)
+    {
+        $resto = Restaurant::find($id_resto) ;
+        $cats = $resto->categories ;
+
+        return json_encode($cats) ;
     }
 }

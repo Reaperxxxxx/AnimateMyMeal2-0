@@ -120,7 +120,7 @@ class RestaurantController extends Controller
 
             if(auth()->user()->isAdmin()) {
                 $rest->delete();
-                return redirect('/restaurants')->with('success', 'Restaurant deleted');
+                return redirect('/restaurant')->with('success', 'Restaurant deleted');
             }
         abort("503",'not authorized') ;
     }
