@@ -16,9 +16,9 @@ class RestaurantController extends Controller
     public function index()
     {
 
-        //$restos = Restaurant::all() ;
-        $restos = Restaurant::with('user')->get() ;
-        return json_encode($restos) ;
+        $restos = Restaurant::all() ;
+        //$restos = Restaurant::with('user')->get() ;
+        return json_encode($restos, JSON_UNESCAPED_SLASHES) ;
     }
 
 

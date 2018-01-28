@@ -7,21 +7,53 @@
                 <div class="panel-heading">Add Restaurant</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    {!! Form::open(
+                        array(
+                            'url' => '/restaurant',
+                            'class' => 'form-horizontal',
+                            'method'=> 'POST',
+                            'files' => true)) !!}
+
                         {{ csrf_field() }}
 
-
-
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <div class="col-md-8">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            {!! Form::label('name','Name') !!}
+                            {!! Form::text('name', old('name'), array('placeholder'=>'Name','class'=>'form-control' )) !!}
+
+
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                           <div class="col-md-8" >
+                               {!! Form::label('name','Name') !!}
+                                <select  class="form-control" name="user">
+                                    {{$users =App\User::all()}}
+                                    <option value="">Select a user here </option>
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('user'))
+                                    <span class="hel p-block">
+                                        <strong>{{ $errors->first('user') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-8" >
+
+                                {!! Form::label('Restaurant Image') !!}
+                                {!! Form::file('image', null,['class'=>'file']) !!}
+
+                                @if ($errors->has('user'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user') }}</strong>
                                     </span>
                                 @endif
                             </div>
