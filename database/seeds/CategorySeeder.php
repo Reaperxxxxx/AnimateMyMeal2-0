@@ -40,5 +40,35 @@ class CategorySeeder extends Seeder
         $cat3->save() ;
         //$cat3->restaurant()->associate(Restaurant::find(1)) ;
 
+
+
+        $cat23 = new Category() ;
+        $cat23->name="food" ;
+        $cat23->id_restaurant = "2";
+        $cat23->save() ;
+
+        //$cat->restaurant()->associate(Restaurant::find(1)) ;
+
+
+        $cat24 = new Category() ;
+        $cat24->name="Drinks" ;
+        $cat24->id_restaurant = "2";
+        $cat24->save() ;
+        //$cat1->restaurant()->associate(Restaurant::find(1)) ;
+
+        $cat25 = new Category() ;
+        $cat25->name="cold" ;
+        $cat25->id_restaurant = "2";
+        $cat25->save() ;
+        //$cat2->restaurant()->associate(Restaurant::find(1)) ;
+
+        $cat313= new Category() ;
+        $cat313->name="hot" ;
+        $cat313->id_restaurant = "3";
+        $cat313->save() ;
+        //$cat3->restaurant()->associate(Restaurant::find(1)) ;
+
+
+
     }
 }
