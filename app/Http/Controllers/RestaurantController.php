@@ -104,7 +104,7 @@ class RestaurantController extends Controller
         $resto->id_User = $request->input('Owner');
         $resto->save();
 
-        return redirect('/restaurants')->with('success', 'Restaurant added');
+        return redirect('/restaurant')->with('success', 'Restaurant added');
     }
 
     /**
