@@ -165,7 +165,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
 
         /*
@@ -231,7 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];
