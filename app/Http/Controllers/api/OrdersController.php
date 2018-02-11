@@ -4,9 +4,8 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category ;
-use App\Restaurant ;
-class CategoryController extends Controller
+
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::all() ;
-        return json_encode($cats) ;
+        //
     }
 
     /**
@@ -48,8 +46,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-       $cat = Category::find($id) ;
-       return json_encode($cat) ;
+        //
     }
 
     /**
@@ -85,38 +82,4 @@ class CategoryController extends Controller
     {
         //
     }
-
-    public function catbyresto($id_resto)
-    {
-        $resto = Restaurant::find($id_resto) ;
-        $cats = $resto->categories ;
-
-        return json_encode($cats) ;
-    }
-
-    public function catWithMeals($id_resto)
-    {
-
-        $resto = Restaurant::find($id_resto) ;
-        $cats = $resto->categories ;
-        //$meals = Meal::with('category_id') ;
-        $i=0;
-
-        foreach ($cats as $cat)
-        {
-            $tabmeals=array();
-            //$meal= Meal::find($cat->id) ;
-            $meals=$cat->meals;
-            foreach ($meals as $meal) {
-                array_push($tabmeals,$meal);
-            }
-            $cats[$i]['meals'] = $tabmeals;
-            $i++;
-        }
-
-        return json_encode($cats, JSON_UNESCAPED_SLASHES) ;
-
-
-    }
-
 }

@@ -10,7 +10,7 @@ class Meal extends Model
 {
     public function category()
     {
-        return $this->belongsTo(Category::class,'id_category');
+        return $this->belongsTo(Category::class);
     }
 
     public function Promotion()

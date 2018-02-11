@@ -33,6 +33,7 @@ class RestaurantSeeder extends Seeder
         $resto = new Restaurant();
         $resto->name="La Terrasse" ;
         $resto->user()->associate(User::find(2)) ;
+        $resto->img_url="https://i.pinimg.com/736x/23/18/69/231869aec99b3684580fcb2e7eeb9c07--flourless-chocolate-cakes-restaurant-.jpg" ;
         $resto->save() ;
 
 

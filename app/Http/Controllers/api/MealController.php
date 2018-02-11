@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Meal ;
@@ -86,5 +87,13 @@ class MealController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mealsByCat($id_cat)
+    {
+        $cat = Category::find($id_cat) ;
+        $meals = $cat->meals ;
+
+        return json_encode($meals) ;
     }
 }

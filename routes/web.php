@@ -28,10 +28,13 @@ Route::resource('category','CategoryController') ;
 Route::group(['prefix' => 'api'], function () {
     Route::resource('restaurant','api\RestaurantController') ;
     Route::resource('meal','api\MealController') ;
+        Route::get('getmealsbycat/{id_cat}','api\MealController@mealsByCat') ;
     Route::resource('category','api\CategoryController') ;
         Route::get('getrestaurantcategories/{id_resto}','api\CategoryController@catbyresto') ;
+        Route::get('getcatwithmeals/{id_resto}','api\CategoryController@catWithMeals');
     Route::resource('promotion','api\PromotionController') ;
         Route::get('promomeals','api\PromotionController@promomeals') ;
+        Route::resource("orders","api\OrdersController");
 
 
 });

@@ -18,11 +18,12 @@ class CreateMealsTable extends Migration
             $table->string('name') ;
             $table->text('description');
             $table->float('price') ;
+            $table->string('img_url')->nullable() ;
             $table->timestamps();
             $table->integer('id_promotion')->unsigned()->nullable();
             $table->foreign('id_promotion')->references('id')->on('promotions');
-            $table->integer('id_category')->unsigned();
-            $table->foreign('id_category')->references('id')->on('categories');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
