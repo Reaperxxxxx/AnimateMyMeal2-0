@@ -16,9 +16,9 @@ class MealController extends Controller
      */
     public function index()
     {
-     //   $meals = Meal::all() ;
-        $meals = Meal::with('category')->get();
-        return json_encode($meals) ;
+           $meals = Meal::all() ;
+     //  $meals = Meal::with('category')->get();
+        return json_encode($meals,JSON_UNESCAPED_SLASHES) ;
     }
 
     /**
