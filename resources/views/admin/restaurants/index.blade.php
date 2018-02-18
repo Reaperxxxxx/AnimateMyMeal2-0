@@ -84,7 +84,9 @@
                                             {{$users =App\User::all()}}
                                             <option value="">Select a user here </option>
                                             @foreach($users as $user)
+                                                @if($user->isAdminResto() )
                                                 <option value="{{$user->id}}">{{$user->name}}</option>
+                                                @endif
                                                 @endforeach
                                         </select>
 
