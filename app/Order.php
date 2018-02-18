@@ -15,4 +15,8 @@ class Order extends Model
     {
         return $this->belongsTo(Commande::class);
     }
+    public function orderLists()
+    {
+        return $this->hasMany(OrderList::class);
+    }
 }

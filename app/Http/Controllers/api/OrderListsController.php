@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Meal;
-use App\Order;
 use App\OrderList;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OrdersController extends Controller
+class OrderListsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,6 @@ class OrdersController extends Controller
     public function index()
     {
         //
-
     }
 
     /**
@@ -31,24 +28,6 @@ class OrdersController extends Controller
         //
     }
 
-    public function createOrderWithMealsIds($mealsIds){
-
-        $mealsIdsArray = explode(",",$mealsIds);
-        $order = new Order();
-        $order->device_id = "1";
-        $order->save();
-        $orders = $order->orderBy('id','desc')->get();
-        $orderId = $orders[0]->id;
-        //  return json_encode($orderId);
-        foreach ($mealsIdsArray as $meal){
-            $ol = new OrderList();
-            $ol->meal_id = $meal;
-            $ol->order_id = $orderId;
-            $ol->save();
-
-        }
-       // return json_encode($mealsIdsArray[3]);
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -58,8 +37,6 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         //
-
-
     }
 
     /**
@@ -71,9 +48,9 @@ class OrdersController extends Controller
     public function show($id)
     {
         //
-        $order = Order::find($id);
-        $ols = $order->orderLists();
-        return json_encode($ols);
+        $ol = OrderList::find($id);
+        $order = $ol->order();
+        return json_encode($order);
     }
 
     /**

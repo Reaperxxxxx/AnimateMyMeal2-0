@@ -58,6 +58,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('promotion','api\PromotionController') ;
         Route::get('promomeals','api\PromotionController@promomeals') ;
         Route::resource("orders","api\OrdersController");
-
+        Route::get('createOrderWithMealsIds/{meals_ids}','api\OrdersController@createOrderWithMealsIds');
+        Route::resource("orderLists","api\OrderListsController");
 
 });
