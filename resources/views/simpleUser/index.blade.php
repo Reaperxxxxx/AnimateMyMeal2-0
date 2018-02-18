@@ -15,6 +15,9 @@
 
                             </div>
                         @endif
+                            <div id="pop_div"></div>
+                            // With Lava class alias
+                            <?= Lava::render('AreaChart', 'Population', 'pop_div') ?>
 
                         You are logged in!
                     </div>

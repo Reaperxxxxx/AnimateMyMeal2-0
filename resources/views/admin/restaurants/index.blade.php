@@ -16,7 +16,7 @@
                         @if(count($restos)>0)
 
                             <table class="table table-bordered">
-                                <th>name</th>
+                                <th>bame</th>
                                 <th>user</th>
                                 <th></th>
                                 <th></th>

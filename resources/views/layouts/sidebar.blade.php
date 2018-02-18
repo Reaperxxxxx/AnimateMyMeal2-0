@@ -29,18 +29,37 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><span>Link</span></a></li>
-            <li><a href="#"><span>Another Link</span></a></li>
-            <li class="treeview">
+            <li class="header"> </li>
+
+            @if(Auth::authenticate()->isAdmin())
+
+            <li><a href="/restaurant"><span>Restaurants</span></a></li>
+            <li><a href="/asset"><span>Assets </span></a></li>
+
+            @endif
+
+            @if(Auth::authenticate()->isAdminResto())
+
+                <li><a href="/meal"><span>Meals</span></a></li>
+                <li><a href="/category"><span>Category</span></a></li>
+                <li><a href="/employee"><span>Employees</span></a></li>
+                <li><a href="/menu"><span>Menu</span></a></li>
+                <li><a href="/statsResto"><span>statitstics</span></a></li>
+                <li><a href="/adminResto"><span>Choose a restaurant</span></a></li>
+                <li><a href="/assetStore"><span>Asset Store</span></a></li>
+
+            @endif
+
+
+
+        </ul>
+        <!--  <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">Link in level 2</a></li>
                     <li><a href="#">Link in level 2</a></li>
                 </ul>
-            </li>
-        </ul><!-- /.sidebar-menu -->
+            </li>/.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>

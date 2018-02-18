@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category ;
 
 class CategoryController extends Controller
 {
@@ -11,9 +12,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return "i'm working";
+        if ($request->cookie('id_resto') == null)
+        {return redirect('/adminResto');}
+
+
+        $value = $request->cookie('id_resto');
+        $categorys = Category::where('id_restaurant', $value )->get();
+
+        return view('category.index')->with('categorys', $categorys);
     }
 
     /**
@@ -24,6 +32,8 @@ class CategoryController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -34,7 +44,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+
+        if ($request->cookie('id_resto') == null)
+        {return redirect('/adminResto');}
+
+
+        $value = $request->cookie('id_resto');
+
+
+        $category = new Category;
+        $category->name = $request->input('name') ;
+        $category->id_restaurant = $value ;
+        $category->save() ;
+
+        return redirect('/category')->with('success', 'category added');
     }
 
     /**
@@ -56,7 +83,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category= Category::find($id) ;
+
+        return view('category.edit')->with('category',$category);
     }
 
     /**
@@ -68,9 +97,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $this->validate($request, [
+            'name' => 'required'
 
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->input('name');
+
+        $category->save() ;
+
+        return redirect('/category')->with('success', 'category added');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -79,6 +117,19 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id) ;
+
+            $category->delete();
+            return redirect('/category')->with('success', 'category deleted');
+
+
     }
+
+ public function cookie(Request $request)
+{  if ($request->cookie('id_resto') == null)
+{return redirect('/adminResto');}
+
+
+    $value = $request->cookie('id_resto');
+    return $value ; }
 }

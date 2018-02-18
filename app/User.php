@@ -94,6 +94,10 @@ class User extends Authenticatable
         return null !== $this->roles()->where('name', 'SimpleUser')->first();
     }
 
+    public function isEmployee()
+    {
+        return null !== $this->roles()->where('name', 'Employee')->first();
+    }
 
 
 
