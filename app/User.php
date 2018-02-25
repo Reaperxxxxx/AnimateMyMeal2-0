@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function restaurant()
     {
-        return $this->hasMany(Restaurant::class);
+        return $this->hasMany(Restaurant::class,'id_User');
     }
 
     public function goesToRestaurant()

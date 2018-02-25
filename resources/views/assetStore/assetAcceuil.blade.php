@@ -61,9 +61,7 @@
                             <!--SEARCH WIDGET END-->
                             <!--CATEGOREIS WIDGET START-->
                             <div class="widget widget-categories">
-                                <div class="widget-header">
-                                    <h2>CATEGOREIS</h2>
-                                </div>
+
 
                                 @php
                                     $categories =App\CategoryAsset::all();

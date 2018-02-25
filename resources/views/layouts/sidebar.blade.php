@@ -35,7 +35,9 @@
 
             <li><a href="/restaurant"><span>Restaurants</span></a></li>
             <li><a href="/asset"><span>Assets </span></a></li>
+            <li><a href="/categoryAsset"><span>Assets categories</span></a></li>
 
+                categoryAsset
             @endif
 
             @if(Auth::authenticate()->isAdminResto())

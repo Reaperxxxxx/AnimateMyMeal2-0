@@ -71,12 +71,12 @@ class AssetStoreController extends Controller
 
         $asset = new Asset;
 
-if (Input::hasfile('image1'))
-    {
-        $imagePath1 = $request->file('image1')->store('public');
-        Storage::disk('public')->put('public',Input::file('image1'));
-        $asset->image1 = $imagePath1 ;
-    }
+        if (Input::hasfile('image1'))
+        {
+            $imagePath1 = $request->file('image1')->store('public');
+            Storage::disk('public')->put('public',Input::file('image1'));
+            $asset->image1 = $imagePath1 ;
+        }
 
         if (Input::hasfile('image2'))
         {

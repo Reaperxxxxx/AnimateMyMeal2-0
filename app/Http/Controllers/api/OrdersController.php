@@ -31,12 +31,14 @@ class OrdersController extends Controller
         //
     }
 
-    public function createOrderWithMealsIds($mealsIds){
+    public function createOrderWithMealsIds($mealsIds,$total){
 
         $mealsIdsArray = explode(",",$mealsIds);
         $order = new Order();
         $order->device_id = "1";
+        $order->total = $total ;
         $order->save();
+
         $orders = $order->orderBy('id','desc')->get();
         $orderId = $orders[0]->id;
         //  return json_encode($orderId);

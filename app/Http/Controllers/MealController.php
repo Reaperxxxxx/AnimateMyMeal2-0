@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 use App\Meal;
 use App\User ;
 
@@ -44,14 +46,25 @@ class MealController extends Controller
             'name' => 'required',
             'description' => 'required',
             'category'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            'meal_image'=>'required'
         ]);
 
         $meal = new Meal;
         $meal->name = $request->input('name');
         $meal->description = $request->input('description');
         $meal->price = $request->input('price') ;
-        $meal->id_category = $request->input('category') ;
+        $meal->category_id = $request->input('category') ;
+        if ($request->input('prep_time')!=null)
+        {
+            $meal->preparation_time_min = $request->input('prep_time');
+        }
+        if (Input::hasfile('meal_image'))
+        {
+            $imagePath1 = $request->file('meal_image')->store('public');
+            Storage::disk('public')->put('public',Input::file('meal_image'));
+            $meal->img_url = $imagePath1 ;
+        }
         $meal->save() ;
 
         return redirect('/meal')->with('success', 'Meal added');
@@ -102,7 +115,7 @@ class MealController extends Controller
         $meal->name = $request->input('name');
         $meal->description = $request->input('description');
         $meal->price = $request->input('price') ;
-        $meal->id_category = $request->input('category') ;
+        $meal->category_id = $request->input('category') ;
         $meal->save() ;
 
         return redirect('/meal')->with('success', 'Meal added');

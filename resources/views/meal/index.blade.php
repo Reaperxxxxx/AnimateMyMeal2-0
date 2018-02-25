@@ -13,7 +13,6 @@
                     <div class="panel-body">
 
 
-
                         @if(count($meals)>0)
 
                             <table class="table table-bordered">
@@ -21,6 +20,7 @@
                                 <th>description</th>
                                 <th>category</th>
                                 <th>price</th>
+                                <th>preparation time</th>
                                 <th></th>
                                 <th></th>
 
@@ -29,8 +29,9 @@
                                     <tr>
                                         <td>{{$meal->name}}</td>
                                         <td>{{$meal->description}}</td>
-                                        <td>{{App\Category::where('id',$meal->id_category)->pluck('name')->first()}}</td>
+                                        <td>{{App\Category::where('id',$meal->category_id)->pluck('name')->first()}}</td>
                                         <td>{{$meal->price}}</td>
+                                        <td>{{$meal->preparation_time_min}}</td>
                                         <td>
                                             {!!Form::open(['action' => ['MealController@destroy', $meal->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                                             {{Form::hidden('_method', 'DELETE')}}
@@ -58,7 +59,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-heading">Add meal</div>
 
                     <div class="panel-body">
 
@@ -106,6 +107,20 @@
 
                                 </div>
 
+                                <label for="prep_time" class="col-md-4 control-label">Perparation time</label>
+
+                                <div class="col-md-6">
+
+                                    <input id="prep_time" type="number"  value="10" class="form-control" name="prep_time" value="{{ old('prep_time') }}"  autofocus>
+
+                                    @if ($errors->has('prep_time'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('prep_time') }}</strong>
+                                    </span>
+                                    @endif
+
+                                </div>
+
                                 <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
                                     <label for="user" class="col-md-4 control-label">Category </label>
 
@@ -114,7 +129,20 @@
                                         <select  class="form-control" name="category">
                                             {{$Categories =App\Category::all()}}
                                             <option value="">Select a category</option>
+                                            <optgroup label="{{$Categories->first()->restaurant->name}}">
+                                                @php
+                                                $current_restaurant = $Categories->first()->restaurant->id ;
+                                                @endphp
                                             @foreach($Categories as $category)
+
+                                                @if($category->restaurant->id!=$current_restaurant)
+                                                        <optgroup label="{{$category->restaurant->name}}">
+                                                            @php
+                                                                $current_restaurant = $category->restaurant->id ;
+                                                            @endphp
+
+                                                        @endif
+
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
@@ -125,6 +153,19 @@
                                     </span>
                                         @endif
                                     </div>
+
+                                    <label for="asset_link" class="col-md-4 control-label">Image</label>
+
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="meal_image"  id="meal_image" >
+
+                                        @if ($errors->has('meal_image'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('meal_image') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+
                                 </div>
                             </div>
 
