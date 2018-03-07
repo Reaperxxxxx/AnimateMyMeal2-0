@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class CookieController extends Controller {
+
+
     public function setCookie(Request $request){
    //
         //

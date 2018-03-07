@@ -18,11 +18,9 @@
 
                         foreach ($restaurants as $restaurant)
                         {
-                        $array[$restaurant->id] = $restaurant->name ;
-                      // array_push($array,$restaurant->id=>$restaurant->name) ;
-
-
-    }
+                            $array[$restaurant->id] = $restaurant->name ;
+                          // array_push($array,$restaurant->id=>$restaurant->name) ;
+                        }
                     @endphp
 
 
