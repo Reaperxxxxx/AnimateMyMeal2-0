@@ -16,8 +16,8 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('id_order')->unsigned()->nullable();
-            $table->foreign('id_order')->references('id')->on('orders');
+            $table->integer('order_id')->unsigned()->nullable();
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

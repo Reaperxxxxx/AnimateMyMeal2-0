@@ -19,6 +19,7 @@ class CreateMealsTable extends Migration
             $table->text('description');
             $table->float('price') ;
             $table->string('img_url')->nullable() ;
+            $table->integer('preparation_time_min')->nullable();
             $table->timestamps();
             $table->integer('id_promotion')->unsigned()->nullable();
             $table->foreign('id_promotion')->references('id')->on('promotions');

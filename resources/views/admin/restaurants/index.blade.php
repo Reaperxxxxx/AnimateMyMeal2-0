@@ -16,7 +16,7 @@
                         @if(count($restos)>0)
 
                             <table class="table table-bordered">
-                                <th>name</th>
+                                <th>bame</th>
                                 <th>user</th>
                                 <th></th>
                                 <th></th>
@@ -84,7 +84,9 @@
                                             {{$users =App\User::all()}}
                                             <option value="">Select a user here </option>
                                             @foreach($users as $user)
+                                                @if($user->isAdminResto() )
                                                 <option value="{{$user->id}}">{{$user->name}}</option>
+                                                @endif
                                                 @endforeach
                                         </select>
 

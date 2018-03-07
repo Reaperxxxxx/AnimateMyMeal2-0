@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function restaurant()
     {
-        return $this->hasMany(Restaurant::class);
+        return $this->hasMany(Restaurant::class,'id_User');
     }
 
     public function goesToRestaurant()
@@ -94,6 +94,10 @@ class User extends Authenticatable
         return null !== $this->roles()->where('name', 'SimpleUser')->first();
     }
 
+    public function isEmployee()
+    {
+        return null !== $this->roles()->where('name', 'Employee')->first();
+    }
 
 
 

@@ -4,6 +4,8 @@
 @extends('layouts.app')
 
 @section('content')
-    {{$menuitem}}
+   aaaa
+
+aaaa
 
 @endsection

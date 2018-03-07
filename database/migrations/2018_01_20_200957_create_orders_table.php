@@ -15,11 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('total')->nullable() ;
             $table->timestamps();
-            $table->integer('id_instance')->unsigned()->nullable();
-            $table->integer('id_device')->unsigned()->nullable();
-            $table->foreign('id_instance')->references('id')->on('instance__devices');
-            $table->foreign('id_device')->references('id')->on('devices');
+            $table->integer('instance_id')->unsigned()->nullable();
+            $table->integer('device_id')->unsigned()->nullable();
+            $table->foreign('instance_id')->references('id')->on('instance__devices');
+            $table->foreign('device_id')->references('id')->on('devices');
         });
     }
 
