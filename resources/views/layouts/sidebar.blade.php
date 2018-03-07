@@ -49,7 +49,7 @@
                 <li><a href="/statsResto"><span>statitstics</span></a></li>
                 <li><a href="/adminResto"><span>Choose a restaurant</span></a></li>
                 <li><a href="/assetStore"><span>Asset Store</span></a></li>
-
+                <li><a href="/mesCommandes"><span>Mes commandes</span></a></li>
             @endif
 
 

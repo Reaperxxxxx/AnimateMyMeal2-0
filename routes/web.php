@@ -46,7 +46,7 @@ Route::get('employee/{idRes}/yahya', 'EmployeeController@res');
 
 Route::get('/datatables','DatatablesController@getIndex');
 Route::get('/anyData','DatatablesController@anyData')->name('datatables.data');
-
+Route::resource('/mesCommandes','OrdersController');
 
 Route::group(['prefix' => 'api'], function () {
     Route::resource('restaurant','api\RestaurantController') ;
