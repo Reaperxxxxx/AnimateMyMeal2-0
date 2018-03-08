@@ -27,7 +27,7 @@ class OrdersController extends Controller
 
             $idResto = $request->cookie('id_resto');
             $devices = Device::where('id_restaurant', $idResto )->get();
-            $orders = Order::whereIn('device_id',$devices)->get();
+            $orders = Order::whereIn('device_id',$devices)->orderBy('id','DESC')->get();
 
 
             return view('adminResto.orders')->with('orders',$orders);
@@ -36,6 +36,23 @@ class OrdersController extends Controller
 
     }
 
+    public function makeItReady($id){
+        $order = Order::find($id);
+        $order->is_ready = 1;
+        $order->save();
+
+        $device = Device::find($order->device_id);
+        $restoId = $device->id_restaurant;
+        $devices = Device::where('id_restaurant', $restoId )->get();
+        $orders = Order::whereIn('device_id',$devices)->get();
+
+
+        return redirect('/mesCommandes')->with('orders',$orders);
+
+
+
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -93,6 +110,9 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Order::find($id);
+        $order->is_ready = 1;
+        $order->save();
     }
 
     /**
