@@ -16,5 +16,10 @@ class Asset extends Model
         return $this->belongsTo(CategoryAsset::class,'id_Category');
     }
 
+    public function restaurantassets()
+    {
+        return $this->hasMany(RestaurantAnimation::class);
+    }
+
 
 }

@@ -57,8 +57,10 @@ Route::group(['prefix' => 'api'], function () {
         Route::get('getcatwithmeals/{id_resto}','api\CategoryController@catWithMeals');
     Route::resource('promotion','api\PromotionController') ;
         Route::get('promomeals','api\PromotionController@promomeals') ;
-        Route::resource("orders","api\OrdersController");
+    Route::resource("orders","api\OrdersController");
         Route::get('createOrderWithMealsIds/{meals_ids}/{total}','api\OrdersController@createOrderWithMealsIds');
-        Route::resource("orderLists","api\OrderListsController");
+    Route::resource("orderLists","api\OrderListsController");
+    Route::resource('restaurantanimation','api\RestaurantAnimationController') ;
+        Route::get('createrestasset/{restaurant_id}/{asset_id}','api\RestaurantAnimationController@createrestaurantanimation') ;
 
 });

@@ -32,6 +32,12 @@ class Restaurant extends Model
         return $this->hasMany(Employee::class);
     }
 
+    public function restaurantanimations()
+    {
+        return $this->hasMany(RestaurantAnimation::class);
+    }
+
+
     public function str()
     {
         return 'working' ;

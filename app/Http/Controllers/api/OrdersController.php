@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Meal;
 use App\Order;
 use App\OrderList;
 use Illuminate\Http\Request;
