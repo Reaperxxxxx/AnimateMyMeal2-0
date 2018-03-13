@@ -22,12 +22,12 @@
 
                                 @foreach($orders as $order)
 
-                                    <tr>
+                                    <tr class="@if($order->is_ready == 1) success @endif">
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->device_id}}</td>
                                         <td>{{$order->updated_at}}</td>
                                         <td>{{$order->total}}</td>
-                                        <td><a href="/mesCommandes/{{$order->id}}" class="btn btn-primary pull-left" >Show Info</a> <a class="btn btn-success pull-right  " href="/meal/{{$order->id}}/edit">Ready</a></td>
+                                        <td><a href="/mesCommandes/{{$order->id}}" class="btn btn-primary pull-left" >Show Info</a> <a class="btn btn-success pull-right @if($order->is_ready == 1) disabled @endif " href="/makeItReady/{{$order->id}}">Ready</a></td>
 
 
                                     </tr>
@@ -45,4 +45,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+
+        function reload() {
+            window.location.reload() ;
+
+        }
+
+        setInterval("reload();", 30000);
+
+    </script>
 @endsection

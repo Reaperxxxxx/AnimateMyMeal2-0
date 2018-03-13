@@ -19,8 +19,10 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
             $table->integer('instance_id')->unsigned()->nullable();
             $table->integer('device_id')->unsigned()->nullable();
+            $table->integer('is_ready')->unsigned()->nullable();
             $table->foreign('instance_id')->references('id')->on('instance__devices');
             $table->foreign('device_id')->references('id')->on('devices');
+
         });
     }
 

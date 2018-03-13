@@ -21,7 +21,7 @@ class CookieController extends Controller {
         return $response  ;
     }
     public function getCookie(Request $request){
-        $value = $request->cookie('nameeee');
-        echo $value;
+        $value = $request->cookie('id_resto');
+        return $value;
     }
 }
