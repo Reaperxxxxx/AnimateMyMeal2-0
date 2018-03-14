@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Meal;
 use App\Order;
 use App\OrderList;
 use Illuminate\Http\Request;
@@ -42,13 +43,30 @@ class OrdersController extends Controller
         $orders = $order->orderBy('id','desc')->get();
         $orderId = $orders[0]->id;
         //  return json_encode($orderId);
+        $prepTime = 0;
+
+        $hashset = array();
+
         foreach ($mealsIdsArray as $meal){
             $ol = new OrderList();
             $ol->meal_id = $meal;
             $ol->order_id = $orderId;
             $ol->save();
 
+            if (!array_key_exists($meal, $hashset)){
+                $hashset[$meal] = true;
+            }
+
+            //$prepTime += $meal->preparation_time_min;
         }
+
+        foreach ($hashset as $key => $value){
+
+            $meal = Meal::find($key);
+            $prepTime += $meal->preparation_time_min;
+        }
+        
+        return $prepTime;
        // return json_encode($mealsIdsArray[3]);
     }
     /**

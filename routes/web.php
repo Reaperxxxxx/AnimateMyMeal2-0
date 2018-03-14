@@ -63,5 +63,12 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource("orderLists","api\OrderListsController");
     Route::resource('restaurantanimation','api\RestaurantAnimationController') ;
         Route::get('createrestasset/{restaurant_id}/{asset_id}','api\RestaurantAnimationController@createrestaurantanimation') ;
+    Route::resource('rating','api\RatingController') ;
+
+    Route::get('rating/{idClient}/{type}/{id_rated}','api\RatingController@getRating') ;
+    Route::get('ratingAvg/{type}/{id_rated}','api\RatingController@getRatingAvg') ;
+    Route::get('updateapk','api\RatingController@updateAPK') ;
+    Route::post('ratings/add/','api\RatingController@addRating') ;
+
 
 });

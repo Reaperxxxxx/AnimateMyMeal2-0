@@ -96,4 +96,5 @@ class MealController extends Controller
 
         return json_encode($meals) ;
     }
+
 }
