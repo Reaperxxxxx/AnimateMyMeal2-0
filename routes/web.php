@@ -27,12 +27,14 @@ Route::resource('promotion','PromotionController');
 Route::resource('adminResto','AdminRestoController');
 Route::resource('asset','AssetStoreController');
 Route::resource('categoryAsset','CategoryAssetController');
+Route::resource('RestaurantAnimation','RestaurantAnimationController') ;
 
 
 Route::get('assetStore', 'AssetStoreController@assetStore');
 Route::get('assetStore/{id}', 'AssetStoreController@assetStoreCat');
 Route::get('download/{id}', 'AssetStoreController@getDownload');
 Route::get('assetStore/assetDetails/download/{id}', 'AssetStoreController@getDownload');
+
 
 
 Route::get('assetDetails/{id}','AssetStoreController@details');

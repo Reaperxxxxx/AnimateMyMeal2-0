@@ -76,13 +76,13 @@
                                     <p>{{$asset->description}}</p>
                                     <!--PRODUCT QUANTITY START-->
                                     <div class="product-quantity">
-                                        <h5>Quantity:</h5>
-                                        <form id='myform' method='POST' action='#'>
-                                            <input type='button' value='-' class='qtyminus' field='quantity'>
-                                            <input type='text' name='quantity' value='0' class='qty'>
-                                            <input type='button' value='+' class='qtyplus' field='quantity'>
+
+                                        <form  method='POST' action="{{route('RestaurantAnimation.store')}}">
+                                            {{ csrf_field() }}
+
+                                            <input readonly  name="asset_id" value ="{{$asset->id}}" />
+                                            <input type="submit" class="btn btn-primary value ="Add Asset"/>
                                         </form>
-                                        <button  class="btn-filled"><a href="/download/7">Add to Cart</a></button>
                                     </div>
                                     <!--PRODUCT QUANTITY END-->
                                     <!--PRODUCT INFO START-->
