@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Category ;
 use App\Restaurant ;
+
 class CategorySeeder extends Seeder
 {
     /**
