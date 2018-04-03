@@ -91,7 +91,7 @@ class CategoryController extends Controller
         $resto = Restaurant::find($id_resto) ;
         $cats = $resto->categories ;
 
-        return json_encode($cats) ;
+        return json_encode($cats,JSON_UNESCAPED_SLASHES);
     }
 
     public function catWithMeals($id_resto)

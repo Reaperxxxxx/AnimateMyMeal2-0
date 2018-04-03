@@ -94,7 +94,7 @@ class MealController extends Controller
         $cat = Category::find($id_cat) ;
         $meals = $cat->meals ;
 
-        return json_encode($meals) ;
+        return json_encode($meals,JSON_UNESCAPED_SLASHES) ;
     }
 
 }
