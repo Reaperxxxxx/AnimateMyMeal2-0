@@ -70,7 +70,7 @@
                                 <div class="kode-text">
                                     <div class="header">
                                         <h2>{{$asset->name}}</h2>
-                                        <h2 class="price">{{$asset->price}} D</h2>
+                                        <h2 class="price">{{$asset->price}} TND</h2>
                                     </div>
 
                                     <p>{{$asset->description}}</p>
@@ -81,7 +81,16 @@
                                             {{ csrf_field() }}
 
                                             <input readonly  name="asset_id" value ="{{$asset->id}}" />
-                                            <input type="submit" class="btn btn-primary value ="Add Asset"/>
+
+                                            <script
+                                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                    data-key="pk_test_sxFhxnxk5cZjmr87aPhFkipd"
+                                                    data-amount="{{$asset->price}}00"
+                                                    data-name="Animate My Meal"
+                                                    data-description="Paying for {{$asset->price}} TND"
+                                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                    data-locale="auto">
+                                            </script>
                                         </form>
                                     </div>
                                     <!--PRODUCT QUANTITY END-->
@@ -137,6 +146,7 @@
     <script src="{{asset('js\assetStore\modernizr.custom.js')}}"></script>
     <script src="{{asset('js\assetStore\jquery.dlmenu.js')}}"></script>
     <script src="{{asset('js\assetStore\functions.js')}}"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     </body>
 
 @endsection

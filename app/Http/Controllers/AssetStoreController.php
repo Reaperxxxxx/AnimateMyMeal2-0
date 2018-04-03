@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Asset;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 
 class AssetStoreController extends Controller
@@ -116,9 +118,13 @@ class AssetStoreController extends Controller
         $asset->description = $request->input('description');
         $asset->price = $request->input('price') ;
         $asset->id_category = $request->input('category') ;
-
+        $token = $request->input('stripeToken');
         $asset->id_user= auth()->id() ;
         $asset->save() ;
+
+        Stripe::setApiKey('sk_test_UCsmgSjYMQqLlOWuHTASXXC9');
+        $charge = Charge::create(['amount' => $asset->price, 'currency' => 'usd', 'source' => $token]);
+        echo $charge;
 
         return redirect('/asset')->with('success', 'asset added');
     }
